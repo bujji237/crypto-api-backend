@@ -2,12 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Crypto = require('./models/Crypto');
 const fetchData = require('./jobs/fetchData');
+require('dotenv').config(); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://bujji:bujjiprasad@cluster0.q9bqz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
